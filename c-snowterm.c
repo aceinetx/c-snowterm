@@ -41,11 +41,11 @@ static void sleep_seconds(float seconds) {
 #endif
 }
 
-static float random_float() {
+static float random_float(void) {
 	return (float)rand() / (float)RAND_MAX;
 }
 
-static Vec2 max_dimensions() {
+static Vec2 max_dimensions(void) {
 	static Vec2 dimensions = {0, 0};
 	if (dimensions.x == 0 || dimensions.y == 0) {
 		dimensions.y = getmaxy(stdscr) - 1;
@@ -54,7 +54,7 @@ static Vec2 max_dimensions() {
 	return dimensions;
 }
 
-static size_t snowflakes_len() {
+static size_t snowflakes_len(void) {
 	size_t len = 0;
 	size_t i;
 	for (i = 0; i < g_snowflakes_count; i++) {
@@ -65,15 +65,15 @@ static size_t snowflakes_len() {
 	return len;
 }
 
-static void add_snowflake() {
+static void add_snowflake(void) {
 	Snowflake snowflake;
-	snowflake.pos.x = (rand() % max_dimensions(stdscr).x) + 1;
+	snowflake.pos.x = (rand() % max_dimensions().x) + 1;
 	snowflake.pos.y = 0;
 	snowflake.ch = g_snowflake_charmap[(int)(rand() % g_snowflake_charmap_len)].ch;
 	g_snowflakes[snowflakes_len()] = snowflake;
 }
 
-static void update_snowflakes() {
+static void update_snowflakes(void) {
 	size_t i;
 	for (i = 0; i < g_snowflakes_count; i++) {
 		int max_height, new_height;
@@ -116,7 +116,7 @@ static void update_snowflakes() {
 	}
 }
 
-static void redisplay() {
+static void redisplay(void) {
 	size_t i;
 	for (i = 0; i < g_snowflakes_count; i++) {
 		Snowflake* snowflake;
@@ -131,7 +131,7 @@ static void redisplay() {
 	}
 }
 
-static void draw_moon() {
+static void draw_moon(void) {
 	static char* moon[] = {
 			/* clang-format off */
 			"  **   ",
