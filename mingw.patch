@@ -1,18 +1,18 @@
---- makefile    2025-06-27 20:03:03.411557600 +0300
-+++ makefile2   2025-06-27 20:04:50.873445800 +0300
+--- makefile	2025-06-27 20:03:03.411557600 +0300
++++ makefile2	2025-06-27 20:04:50.873445800 +0300
 @@ -1,5 +1,5 @@
  CC = cc
 -CFLAGS = -std=c90 -Wall -Wextra -Wpedantic -ggdb
 +CFLAGS = -std=c90 -Wall -Wextra -Wpedantic -ggdb -I/ucrt64/include/ncurses -DNCURSES_STATIC
  LDFLAGS = -lncurses
-
+ 
  all: c-snowterm
 @@ -7,7 +7,7 @@
-        rm -rf c-snowterm *.o
-
+ 	rm -rf c-snowterm *.o
+ 
  c-snowterm: c-snowterm.o
--       $(CC) $(LDFLAGS) -o $@ $<
-+       $(CC) $(LDFLAGS) -o $@ $< /ucrt64/lib/libncurses.a
-
+-	$(CC) $(LDFLAGS) -o $@ $< 
++	$(CC) $(LDFLAGS) -o $@ $< /ucrt64/lib/libncurses.a
+ 
  c-snowterm.o: c-snowterm.c
-        $(CC) $(CFLAGS) -c -o $@ $<
+ 	$(CC) $(CFLAGS) -c -o $@ $< 
