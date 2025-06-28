@@ -67,7 +67,7 @@ static size_t snowflakes_len(void) {
 
 static void add_snowflake(void) {
 	Snowflake snowflake;
-	snowflake.pos.x = (rand() % max_dimensions().x) + 1;
+	snowflake.pos.x = (rand() % (max_dimensions().x + 2));
 	snowflake.pos.y = 0;
 	snowflake.ch = g_snowflake_charmap[(int)(rand() % g_snowflake_charmap_len)].ch;
 	g_snowflakes[snowflakes_len()] = snowflake;
