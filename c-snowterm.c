@@ -207,9 +207,12 @@ int main(int argc, char** argv) {
 
 			update_snowflakes();
 			add_snowflake();
+
 			clear();
+
 			draw_moon();
 			redisplay();
+
 			refresh();
 
 			{
